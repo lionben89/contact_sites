@@ -1,11 +1,17 @@
 echo deploying contact_sites to pip...
+git add .
+set /p commit=Enter commit message: 
+git commit -m "%commit%"
+echo bumping version...
 set /p category=Enter bump category patch, minor or major: 
-echo bumping version 
-python ./setup.py --version > ./version_temp.txt
-set /p version=<./version_temp.txt
-del ./version_temp.txt
+python ./setup.py --version > version_temp
+set /p version=< version_temp
+del version_temp
 bumpversion --current-version %version% %category%
-echo build dist
+echo build dist...
 python setup.py sdist bdist_wheel
-echo uploading to pip
+git add .
+git commit -m "bumping version %version% with %category%"
+git push
+echo uploading to pip...
 twine upload dist/*
