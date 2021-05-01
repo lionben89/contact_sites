@@ -38,5 +38,5 @@ setuptools.setup(
     # Do not edit this string manually, always use bumpversion
     # Details in CONTRIBUTING.rst
     version=__version__,
-    zip_safe=False,
+    zip_safe=False
 )
