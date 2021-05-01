@@ -7,7 +7,7 @@ from matplotlib.patches import Rectangle
 from matplotlib.gridspec import GridSpec
 import tifffile
 
-# import cupy as cp
+import cupy as cp
 # from itkwidgets import view
 
 log = logging.getLogger(__name__)
@@ -195,7 +195,6 @@ class ContactSitesResult:
             ax2.axis('off')
             ax.axis('off')
             self.__is_figure_dirty = False
-
         return self.__figure
 
     def plot_figure(self, figure_ratio=4, image_to_legend_ratio=1):
@@ -258,7 +257,8 @@ class ContactSitesResult:
             distribuation[i,:] = count_distribuation/np.max(count_distribuation)
         return distribuation
 
-    def save_distribuation_figure(self, dim, path):
+    def save_distribuation_figure(self, dim, path, title) -> None:
+        plt.clf()
         distribuation = self.get_dim_distribuation(dim)
         num_slices = distribuation.shape[1]
         num_overlays = distribuation.shape[0]
@@ -269,6 +269,7 @@ class ContactSitesResult:
             plt.plot(x, y)
             legend.append(self.__overlays[i]["name"])
         plt.legend(legend)
-        plt.show()
+        plt.title(title)
         plt.savefig(path)
-        return distribuation
+        plt.show()
+
