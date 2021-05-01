@@ -1,7 +1,5 @@
 import setuptools
 
-__version__ = '1.0.5'
-
 with open("README.md", "r") as fh:
     readme = fh.read()
 
@@ -37,6 +35,6 @@ setuptools.setup(
     url="https://github.com/lionben89/contact_sites.git",
     # Do not edit this string manually, always use bumpversion
     # Details in CONTRIBUTING.rst
-    version=__version__,
+    version='1.0.5',
     zip_safe=False
 )
