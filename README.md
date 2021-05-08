@@ -10,3 +10,6 @@ installation for development:
 2. for development cd to project dirctory
 3. pip install -e .
 
+for deployment:
+1. run deploy.bat from master (it will add,commit,bump,build and deploy to pip)
+
